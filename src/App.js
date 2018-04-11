@@ -7,20 +7,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
+      todos: [  // the initial state of my component
         { description: 'Walk the cat', isCompleted: true },
-        { description: 'Throw the dishes away', isComplteted: false},
-        { description: 'Buy new dishes', isComplteted: false}
-      ]
+        { description: 'Throw the dishes away', isCompleted: false},
+        { description: 'Buy new dishes', isCompleted: false}
+      ]  
     };
   }
 
-  render() {
-    return (
+  render() { // taking some data and displaying it to the user showing it to the user
+    return ( 
       <div className="App">
         <ul>
           { this.state.todos.map((todo, index) =>
-            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />            
+            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />  //anytime you use curly brackets want to be evaluated as javascript and display the evaluated value          
           )}
         </ul>
       </div>
@@ -29,3 +29,7 @@ class App extends Component {
 }
 
 export default App;
+
+// a component gets its props from its parent component (if a component is rendered by another component) 
+// in this case ToDo component is a child of the parent component App.js
+// the parent component carries all of the props that then get passed onto the child
