@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <ul>
           { this.state.todos.map((todo, index) =>
-            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />  //anytime you use curly brackets want to be evaluated as javascript and display the evaluated value          
+            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />  // anytime you use curly brackets want to be evaluated as javascript and display the evaluated value          
           )}
         </ul>
       </div>
