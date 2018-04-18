@@ -9,11 +9,16 @@ class App extends Component {
     this.state = {
       todos: [  // the initial state of my component
         { description: 'Walk the cat', isCompleted: true },
-        { description: 'Throw the dishes away', isCompleted: false},
-        { description: 'Buy new dishes', isCompleted: false}
+        { description: 'Throw the dishes away', isCompleted: false },
+        { description: 'Buy new dishes', isCompleted: false }
       ],
-      newTodoDescription: ''  
+      newTodoDescription: '', 
     };
+  }
+
+  deleteTodo(index) { 
+    const toDoList = this.state.todos.filter( todo => todo !== this.state.todos[index] ); // the stuff on the right side of the arrow is a description of what you want //
+    this.setState({ todos: toDoList }); //the todos property on the state object is now going to be equal to what we removed at line 21 above
   }
 
   handleChange(e) {
@@ -38,7 +43,10 @@ class App extends Component {
       <div className="App">
         <ul>
           { this.state.todos.map((todo, index) =>
-            <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />  // anytime you use curly brackets want to be evaluated as javascript and display the evaluated value          
+            <ToDo key={ index } description={ todo.description } 
+              isCompleted={ todo.isCompleted } 
+              toggleComplete={ () => this.toggleComplete(index) } 
+              deleteTodo={ () => this.deleteTodo(index) }  />  // anytime you use curly brackets want to be evaluated as javascript and display the evaluated value          
           )}
         </ul>
         <form onSubmit={ (e) => this.handleSubmit(e) }> 
